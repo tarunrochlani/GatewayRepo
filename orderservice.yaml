@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderservice
+  namespace: dev
+  
+spec:
+  selector:
+    matchLabels:
+      app: orderservice
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: orderservice
+    spec:
+      containers:
+      - name: acrecomm
+        image: acrecomm.azurecr.io/service.discount:v2
+        ports:
+        - containerPort: 80
